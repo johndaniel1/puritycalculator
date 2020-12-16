@@ -10,7 +10,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
         <mat-toolbar class="login-toolbar" color="primary">
           Purity Calculator</mat-toolbar
         >
-        <br>
         <mat-card>
           <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
             <mat-form-field>
