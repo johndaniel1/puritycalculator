@@ -54,6 +54,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
             ><b>{{ pureweight }}</b></label
           >
         </mat-card>
+        <label>copywright by TamilMaran</label>
       </div>
     </div>
   `,
