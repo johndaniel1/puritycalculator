@@ -87,6 +87,6 @@ export class loginComponent implements OnInit {
   reset() {
     console.log("hi");
     this.pureweight=0;
-    this.loginForm.reset;
+    this.loginForm.reset();
   }
 }
