@@ -35,7 +35,12 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
               />
             </mat-form-field>
 
-            <button type="submit" [disabled]="!loginForm.valid" mat-raised-button color="primary">
+            <button
+              type="submit"
+              [disabled]="!loginForm.valid"
+              mat-raised-button
+              color="primary"
+            >
               Calculate
             </button>
             <button
@@ -43,18 +48,22 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
               type="button"
               mat-raised-button
               color="green"
-            ><b>
-              Reset</b>
+            >
+              <b> Reset</b>
             </button>
           </form>
         </mat-card>
         <br />
         <mat-card *ngIf="pureweight > 0">
+        <div class="center">
           <label
-            ><b>{{ pureweight }}</b></label
-          >
+            ><b> Total Purity in grams: {{ pureweight }}</b></label
+          ></div>
         </mat-card>
-        <label>copywright by TamilMaran</label>
+        <div class="center">
+        <br>
+        <label>Copyright © 2020 TamilStark</label>
+        </div>
       </div>
     </div>
   `,
@@ -62,7 +71,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class loginComponent implements OnInit {
-  
   loginForm: FormGroup;
   pecentile = 0;
   totalweight = 0;
@@ -73,11 +81,11 @@ export class loginComponent implements OnInit {
   ngOnInit() {
     this.loginForminit();
   }
-  loginForminit(){
+  loginForminit() {
     this.loginForm = this.fb.group({
-    username: [null,Validators.required],
-    password: [null,Validators.required]
-  });
+      username: [null, Validators.required],
+      password: [null, Validators.required]
+    });
   }
 
   onSubmit() {
@@ -88,7 +96,7 @@ export class loginComponent implements OnInit {
   }
   reset() {
     console.log("hi");
-    this.pureweight=0;
+    this.pureweight = 0;
     this.loginForm.reset();
   }
 }
