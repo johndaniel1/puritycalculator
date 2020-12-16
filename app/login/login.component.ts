@@ -17,6 +17,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
               <input
                 autofocus
                 type="text"
+                autocomplete="false"
                 matInput
                 placeholder="Enter the percentile value"
                 formControlName="username"
