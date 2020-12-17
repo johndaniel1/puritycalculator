@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   template: `
     <div class="login-container">
       <div class="login-content">
-      <br>
+        <br />
         <mat-toolbar class="login-toolbar" color="primary">
           Purity Calculator</mat-toolbar
         >
@@ -36,12 +36,22 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
               />
             </mat-form-field>
 
+            <mat-form-field>
+              <mat-icon matPrefix>edit</mat-icon>
+              <input
+                type="text"
+                autocomplete="false"
+                matInput
+                placeholder="Enter the delta value"
+                formControlName="deltaValue"
+              />
+            </mat-form-field>
+
             <button
               type="submit"
               [disabled]="!loginForm.valid"
               mat-raised-button
-              color="primary"
-            >
+              color="primary">
               Calculate
             </button>
             <button
@@ -56,14 +66,15 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
         </mat-card>
         <br />
         <mat-card *ngIf="pureweight">
-        <div class="center">
-          <label
-            ><b> Total Purity in grams: {{ pureweight }}</b></label
-          ></div>
+          <div class="center">
+            <label
+              ><b> Total Purity in grams: {{ pureweight }}</b></label
+            >
+          </div>
         </mat-card>
         <div class="center">
-        <br>
-        <label>Copyright © 2020 TamilStark</label>
+          <br />
+          <label>Copyright © 2020 TamilStark</label>
         </div>
       </div>
     </div>
@@ -77,6 +88,7 @@ export class loginComponent implements OnInit {
   totalweight = 0;
   pureweight: number;
   toggle = false;
+  constant =0;
 
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
@@ -85,7 +97,8 @@ export class loginComponent implements OnInit {
   loginForminit() {
     this.loginForm = this.fb.group({
       username: [null, Validators.required],
-      password: [null, Validators.required]
+      password: [null, Validators.required],
+      deltaValue: [null]
     });
   }
 
@@ -94,6 +107,8 @@ export class loginComponent implements OnInit {
     this.pecentile = +this.loginForm.value.username;
     this.totalweight = +this.loginForm.value.password;
     this.pureweight = (this.pecentile * this.totalweight) / 100;
+    this.constant = +this.loginForm.value.deltaValue
+    this.pureweight = this.pureweight + this.constant;
   }
   reset() {
     this.pureweight = NaN;
