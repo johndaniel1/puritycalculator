@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   template: `
     <div class="login-container">
       <div class="login-content">
+      <br>
         <mat-toolbar class="login-toolbar" color="primary">
           Purity Calculator</mat-toolbar
         >
@@ -54,7 +55,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
           </form>
         </mat-card>
         <br />
-        <mat-card *ngIf="pureweight > 0">
+        <mat-card *ngIf="pureweight">
         <div class="center">
           <label
             ><b> Total Purity in grams: {{ pureweight }}</b></label
@@ -95,8 +96,7 @@ export class loginComponent implements OnInit {
     this.pureweight = (this.pecentile * this.totalweight) / 100;
   }
   reset() {
-    console.log("hi");
-    this.pureweight = 0;
+    this.pureweight = NaN;
     this.loginForm.reset();
   }
 }
