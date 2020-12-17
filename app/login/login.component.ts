@@ -51,7 +51,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
               type="submit"
               [disabled]="!loginForm.valid"
               mat-raised-button
-              color="primary">
+              color="primary"
+            >
               Calculate
             </button>
             <button
@@ -88,7 +89,7 @@ export class loginComponent implements OnInit {
   totalweight = 0;
   pureweight: number;
   toggle = false;
-  constant =0;
+  constant = 0;
 
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
@@ -98,7 +99,7 @@ export class loginComponent implements OnInit {
     this.loginForm = this.fb.group({
       username: [null, Validators.required],
       password: [null, Validators.required],
-      deltaValue: [null]
+      deltaValue: [null, Validators.required]
     });
   }
 
@@ -107,7 +108,7 @@ export class loginComponent implements OnInit {
     this.pecentile = +this.loginForm.value.username;
     this.totalweight = +this.loginForm.value.password;
     this.pureweight = (this.pecentile * this.totalweight) / 100;
-    this.constant = +this.loginForm.value.deltaValue
+    this.constant = +this.loginForm.value.deltaValue;
     this.pureweight = this.pureweight + this.constant;
   }
   reset() {
